@@ -14,6 +14,13 @@ api = twitter.Api(consumer_key=CONSUMER_KEY,
                   access_token_secret=ACCESS_SECRET)
 
 
+try:
+    api.VerifyCredentials()
+    print("Authentication OK")
+except twitter.error.TwitterError:
+    print("Error during authentication")
+
+
 def print_user_info(text_entry, output, window):
     username = text_entry.get()                            # Get/Fetch the user
     if username and username != 'Search for a user here':
